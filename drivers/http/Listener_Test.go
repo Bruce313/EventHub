@@ -7,8 +7,8 @@ import (
 
 func TestListener(t *testing.T) {
 	l := Listener{name: "test"}
-	e := core.NewFolder("root")
-	e.Register("hello")
-	e.Listen("hello", l)
-	e.Trigger("hello")
+	f := core.NewFolder("root")
+	f.Register("hello")
+	f.BindListener("hello", &l)
+	f.Trigger("hello", "message from http driver")
 }

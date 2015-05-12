@@ -23,10 +23,10 @@ func NewEvent(name string) Event {
 	}
 }
 
-func (e *Event) AddListener(l IListener) {
+func (e *Event) AddListener(l *IListener) {
 	ch := make(chan string)
 	e.listeners = append(e.listeners, chan<- string(ch))
-	go l.Listen(<-chan string(ch))
+	go l.Listen((<-chan string)(ch))
 }
 
 func (e *Event) Trigger(content string) {

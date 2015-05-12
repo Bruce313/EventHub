@@ -62,7 +62,7 @@ func (f *Folder) Register(path string) bool {
 
 //add event, if not, create
 //path: like org.com.core
-func (f *Folder) BindEvent(path string, l IListener) bool {
+func (f *Folder) BindListener(path string, l *IListener) bool {
 	strs := strings.Split(path, pathSep)
 	first := strs[0]
 	if len(strs) == 1 {
@@ -75,7 +75,7 @@ func (f *Folder) BindEvent(path string, l IListener) bool {
 	}
 	cf, ok := f.folders[first]
 	if ok {
-		return cf.BindEvent(strings.Join(strs[1:], pathSep), l)
+		return cf.BindListener(strings.Join(strs[1:], pathSep), l)
 	}
 	return false
 }
