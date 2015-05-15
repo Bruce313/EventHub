@@ -62,7 +62,7 @@ func (f *Folder) Register(path string) bool {
 
 //add event, if not, create
 //path: like org.com.core
-func (f *Folder) BindListener(path string, l *IListener) bool {
+func (f *Folder) BindListener(path string, l IListener) bool {
 	strs := strings.Split(path, pathSep)
 	first := strs[0]
 	if len(strs) == 1 {

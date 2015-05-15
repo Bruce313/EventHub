@@ -1,5 +1,9 @@
 package core
 
+import (
+	"fmt"
+)
+
 //para types
 const (
 	Int = iota
@@ -23,13 +27,15 @@ func NewEvent(name string) Event {
 	}
 }
 
-func (e *Event) AddListener(l *IListener) {
+func (e *Event) AddListener(l IListener) {
+	fmt.Println("addEvent")
 	ch := make(chan string)
 	e.listeners = append(e.listeners, chan<- string(ch))
 	go l.Listen((<-chan string)(ch))
 }
 
 func (e *Event) Trigger(content string) {
+	fmt.Println("triggerEvent", content)
 	for _, c := range e.listeners {
 		c <- content
 	}
