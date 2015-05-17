@@ -5,5 +5,5 @@ import (
 )
 
 type IPort interface {
-	Serve(fm FolderManager)
+	Serve(fm *FolderManager)
 }
