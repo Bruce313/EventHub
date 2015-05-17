@@ -5,7 +5,9 @@ import (
 )
 
 type Listener struct {
-	name string
+	name    string
+	port    int
+	address string
 }
 
 func (l *Listener) Listen(ch <-chan string) {
