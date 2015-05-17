@@ -17,7 +17,7 @@ type FolderManager struct {
 	folder      Folder
 }
 
-func NewFolderManager() {
+func NewFolderManager() FolderManager {
 	return FolderManager{
 		RegChan:     make(chan RegisterConfig),
 		ListenChan:  make(chan ListenConfig),
@@ -32,12 +32,12 @@ func (fm *FolderManager) Start() {
 		fm.handleReg(rc)
 	case lc := <-fm.ListenChan:
 		fm.handleListen(lc)
-	case tc := <-rm.TriggerChan:
+	case tc := <-fm.TriggerChan:
 		fm.handleTrigger(tc)
 	}
 }
 
-func (fm *FolderManager) handleReg(rc RegConfig) {
+func (fm *FolderManager) handleReg(rc RegisterConfig) {
 
 }
 

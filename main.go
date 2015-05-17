@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	core "github.com/Bruce313/EventHub/core"
 )
 
 func main() {
-	fm := NewFolderManager()
-
+    fmt.Println("main begin");
+	fm := core.NewFolderManager()
+     
 }
